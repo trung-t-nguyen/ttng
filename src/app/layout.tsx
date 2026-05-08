@@ -42,33 +42,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <head>
-        <script
-          defer
-          src="https://media.twiliocdn.com/sdk/js/webchat-v3/releases/3.3.0/webchat.min.js"
-          integrity="sha256-ydLLXnNrb26iFUvKAHsYt9atwfzz0LNcgBmo0NmD5Uk="
-          crossOrigin="anonymous"
-        ></script>
-      </head>
       <body className={inter.className}>
         {children}
-        <div id="twilio-webchat-widget-root"></div>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.addEventListener("load", () => {
-                const appConfig = {
-                  deploymentKey: "CV65ca0626bf17f90209e6c9718bc8775e",
-                  appStatus: "open",
-                  fileAttachment: {
-                    enabled: false
-                  }
-                };
-                Twilio.initWebchat(appConfig);
-              });
-            `,
-          }}
-        ></script>
       </body>
     </html>
   );

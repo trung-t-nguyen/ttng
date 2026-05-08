@@ -1,6 +1,5 @@
-import Header from '@/components/Header';
+import Sidebar from '@/components/Sidebar';
 import Experience from '@/components/Experience';
-import Skills from '@/components/Skills';
 import Projects from '@/components/Projects';
 import Script from 'next/script';
 
@@ -18,22 +17,13 @@ export default function Home() {
       "addressLocality": "Ho Chi Minh City",
       "addressCountry": "Vietnam"
     },
-    "alumniOf": {
-      "@type": "Organization",
-      "name": "FPT Software Company Limited"
-    },
     "worksFor": {
       "@type": "Organization",
       "name": "Zuhlke Engineering Vietnam Ltd"
     },
     "knowsAbout": [
-      "Java",
-      "Angular",
-      "Adobe Experience Manager",
-      "Spring Framework",
-      "Digital Banking",
-      "Microservices",
-      "Software Architecture"
+      "Java", "Angular", "Adobe Experience Manager",
+      "Spring Framework", "Digital Banking", "Microservices"
     ]
   };
 
@@ -44,20 +34,15 @@ export default function Home() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <main className="min-h-screen bg-slate-100 py-12 px-4 print:py-0 print:bg-white" role="main">
-        <div className="max-w-[1100px] mx-auto">
-          <div className="bg-white rounded-xl shadow-[0_0_20px_rgba(0,0,0,0.1)] hover:shadow-[0_0_25px_rgba(0,0,0,0.15)] transition-shadow duration-300 ease-in-out print:shadow-none">
-            <div className="p-12">
-              <div className="max-w-[960px] mx-auto space-y-8">
-                <Header />
-                <Experience />
-                <Skills />
-                <Projects />
-              </div>
-            </div>
-          </div>
+      <div className="min-h-screen bg-slate-200 flex items-start justify-center md:py-14 md:px-6">
+        <div className="w-full max-w-5xl bg-white md:rounded-2xl md:shadow-2xl overflow-hidden flex flex-col md:flex-row min-h-screen md:min-h-0">
+          <Sidebar />
+          <main className="flex-1 py-12 px-10 space-y-12" role="main">
+            <Experience />
+            <Projects />
+          </main>
         </div>
-      </main>
+      </div>
     </>
   );
 }

@@ -1,60 +1,88 @@
 import React from 'react';
 
-export default function Projects() {
-  const projects = [
-    {
-      title: 'Digital Banking Platform',
-      description: 'Contributed to the development of a digital banking platform in Singapore, implementing cloud-native architecture and microservices solutions.',
-      highlights: [
-        'Worked on scalable microservices architecture using Kotlin/Java, Kafka, and Postgres.',
-        'Participated in the Customer Service Domain development, following technical standards and best practices.',
-        'Collaborated with enterprise architects on solution designs and testing frameworks.'
-      ]
-    },
-    {
-      title: 'Adobe Service Offering',
-      description: 'Worked with a digital marketing agency to implement and optimize their Adobe Experience Cloud ecosystem, helping enhance their digital presence.',
-      highlights: [
-        'Implemented Adobe Experience Manager solutions, integrating with Analytics, Target, and Campaign platforms.',
-        'Assisted in optimizing digital marketing workflows and content management processes.'
-      ]
-    },
-    {
-      title: 'Port Management System Modernization',
-      description: 'Participated in modernizing legacy port management systems, contributing to improved user experience and operational efficiency.',
-      highlights: [
-        'Helped design and implement a modern solution architecture for port operations.',
-        'Contributed to frontend development using Angular, following established best practices.',
-        'Implemented WSO2 Identity Server integration for enterprise authentication.',
-        'Assisted in containerized application deployment using Docker.',
-        'Supported user acceptance testing and provided technical assistance.'
-      ]
-    },
-    {
-      title: 'Total Logistics Management Systems',
-      description: 'Worked on enterprise-grade logistics management systems, helping integrate transportation and warehouse management solutions.',
-      highlights: [
-        'Maintained enterprise infrastructure on Red Hat Enterprise Linux.',
-        'Contributed to system integration solutions for logistics operations.',
-        'Worked with development teams, following technical standards and best practices.',
-        'Developed mobile solutions for warehouse management.',
-        'Implemented web-based logistics and transportation management platforms.',
-        'Followed established development standards and quality assurance processes.'
-      ]
-    }
-  ];
+const projects = [
+  {
+    tag: 'Fintech',
+    title: 'Digital Banking Platform',
+    location: 'Singapore',
+    description:
+      'Cloud-native digital banking platform built with microservices architecture, serving customers in Singapore.',
+    highlights: [
+      'Scalable microservices with Kotlin/Java, Kafka, and Postgres.',
+      'Led Customer Service Domain technical delivery.',
+      'Collaborated with enterprise architects on solution design.',
+    ],
+  },
+  {
+    tag: 'Digital Marketing',
+    title: 'Adobe Service Offering',
+    location: 'Vietnam',
+    description:
+      'Adobe Experience Cloud implementation for a digital marketing agency, enhancing content operations and analytics.',
+    highlights: [
+      'Integrated AEM with Analytics, Target, and Campaign.',
+      'Optimized content management workflows.',
+    ],
+  },
+  {
+    tag: 'Port Operations',
+    title: 'Port Management Modernization',
+    location: 'Vietnam',
+    description:
+      'Modernized legacy port management systems, improving UX and operational efficiency for port operators.',
+    highlights: [
+      'Designed modern solution architecture for port ops.',
+      'Built frontend with Angular; deployed via Docker.',
+      'Integrated WSO2 Identity Server for enterprise auth.',
+    ],
+  },
+  {
+    tag: 'Logistics',
+    title: 'Total Logistics Management',
+    location: 'Vietnam',
+    description:
+      'Enterprise logistics platform integrating transportation and warehouse management across multiple business units.',
+    highlights: [
+      'System integrations for logistics and transport ops.',
+      'Mobile warehouse management solution.',
+      'Infrastructure maintenance on RHEL.',
+    ],
+  },
+];
 
+export default function Projects() {
   return (
-    <section className="bg-white rounded-lg">
-      <h2 className="text-2xl font-semibold mb-6">Projects</h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-        {projects.map((project, index) => (
-          <div key={index} className="p-5 bg-gray-50 rounded-lg space-y-3">
-            <h3 className="text-lg font-medium">{project.title}</h3>
-            <p className="text-gray-600 text-justify">{project.description}</p>
-            <ul className="list-disc list-outside text-gray-600 space-y-1.5 ml-4">
-              {project.highlights.map((highlight, idx) => (
-                <li key={idx}>{highlight}</li>
+    <section>
+      <div className="flex items-center gap-3 mb-7">
+        <h2 className="text-[10px] font-bold uppercase tracking-[0.18em] text-slate-400 whitespace-nowrap">
+          Projects
+        </h2>
+        <div className="flex-1 h-px bg-slate-100" />
+      </div>
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        {projects.map((project) => (
+          <div
+            key={project.title}
+            className="group border border-slate-100 rounded-xl p-5 flex flex-col gap-3 hover:border-indigo-200 hover:shadow-md transition-all duration-300"
+          >
+            <div className="flex items-start justify-between gap-2">
+              <span className="text-[10px] font-semibold uppercase tracking-widest text-indigo-400 bg-indigo-50 px-2 py-0.5 rounded">
+                {project.tag}
+              </span>
+              <span className="text-[10px] text-slate-400">{project.location}</span>
+            </div>
+
+            <h3 className="text-sm font-bold text-slate-900 leading-snug">{project.title}</h3>
+
+            <p className="text-xs text-slate-500 leading-relaxed">{project.description}</p>
+
+            <ul className="space-y-1.5 mt-auto pt-1">
+              {project.highlights.map((h) => (
+                <li key={h} className="flex gap-2 text-xs text-slate-600">
+                  <span className="text-indigo-300 flex-shrink-0 mt-0.5">›</span>
+                  <span>{h}</span>
+                </li>
               ))}
             </ul>
           </div>
@@ -62,4 +90,4 @@ export default function Projects() {
       </div>
     </section>
   );
-} 
+}
