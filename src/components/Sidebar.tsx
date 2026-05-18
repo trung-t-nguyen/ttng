@@ -1,4 +1,5 @@
 import React from 'react';
+import { CONTACT } from '@/lib/contact';
 
 const skillGroups = [
   {
@@ -37,7 +38,7 @@ const skillGroups = [
 
 export default function Sidebar() {
   return (
-    <aside className="w-[270px] flex-shrink-0 bg-slate-900 flex flex-col print:hidden">
+    <aside className="w-full md:w-[270px] flex-shrink-0 bg-slate-900 flex flex-col print:hidden">
       {/* Accent bar */}
       <div className="h-1 bg-gradient-to-r from-indigo-500 via-violet-500 to-indigo-400 flex-shrink-0" />
 
@@ -45,10 +46,10 @@ export default function Sidebar() {
         {/* Name & title */}
         <div>
           <h1 className="text-2xl font-bold text-white leading-tight tracking-tight">
-            Trung Nguyen
+            {CONTACT.name}
           </h1>
           <p className="text-indigo-400 text-sm font-medium mt-2 tracking-wide" itemProp="jobTitle">
-            Software Engineer
+            {CONTACT.title}
           </p>
         </div>
 
@@ -65,35 +66,35 @@ export default function Sidebar() {
         <div>
           <SidebarLabel>Contact</SidebarLabel>
           <div className="space-y-2.5 text-xs text-slate-400">
-            <ContactRow icon="📍">Ho Chi Minh City, Vietnam</ContactRow>
+            <ContactRow icon="📍">{CONTACT.locationCity}, {CONTACT.locationCountry}</ContactRow>
             <ContactRow icon="✉">
-              <a href="mailto:nguyentrung0435@gmail.com" className="hover:text-white transition-colors break-all">
-                nguyentrung0435@gmail.com
+              <a href={`mailto:${CONTACT.email}`} className="hover:text-white transition-colors break-all">
+                {CONTACT.email}
               </a>
             </ContactRow>
             <ContactRow icon="📞">
-              <a href="tel:+84989648549" className="hover:text-white transition-colors">
-                +84 989 648 549
+              <a href={CONTACT.phoneTel} className="hover:text-white transition-colors">
+                {CONTACT.phone}
               </a>
             </ContactRow>
             <ContactRow icon="in">
               <a
-                href="https://www.linkedin.com/in/trung-t-nguyen/"
+                href={CONTACT.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:text-white transition-colors"
               >
-                linkedin.com/in/trung-t-nguyen
+                {CONTACT.linkedinDisplay}
               </a>
             </ContactRow>
             <ContactRow icon="gh">
               <a
-                href="https://github.com/trung-t-nguyen"
+                href={CONTACT.github}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:text-white transition-colors"
               >
-                github.com/trung-t-nguyen
+                {CONTACT.githubDisplay}
               </a>
             </ContactRow>
           </div>
@@ -133,7 +134,9 @@ function SidebarLabel({ children }: { children: React.ReactNode }) {
   );
 }
 
-function ContactRow({ icon, children }: { icon: string; children: React.ReactNode }) {
+type ContactIcon = '📍' | '✉' | '📞' | 'in' | 'gh';
+
+function ContactRow({ icon, children }: { icon: ContactIcon; children: React.ReactNode }) {
   return (
     <div className="flex items-start gap-2.5">
       <span className="text-slate-600 mt-0.5 flex-shrink-0 font-mono text-[10px] w-4 text-center">

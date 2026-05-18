@@ -37,7 +37,7 @@ export default function Home() {
       <div className="min-h-screen bg-slate-200 flex items-start justify-center md:py-14 md:px-6">
         <div className="w-full max-w-5xl bg-white md:rounded-2xl md:shadow-2xl overflow-hidden flex flex-col md:flex-row min-h-screen md:min-h-0">
           <Sidebar />
-          <main className="flex-1 py-12 px-10 space-y-12" role="main">
+          <main className="flex-1 py-8 px-6 md:py-12 md:px-10 space-y-12" role="main">
             <Experience />
             <Projects />
           </main>
